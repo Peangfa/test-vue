@@ -176,10 +176,13 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld",
 
-  data: () => ({}),
-};
+<script>
+
+export default {
+  name: 'Home',
+
+  data: () => ({
+  }),
+}
 </script>

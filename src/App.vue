@@ -12,7 +12,7 @@
 
         
         <v-list v-model:opened="open">
-          <v-list-item prepend-icon="mdi-home" title="Home"></v-list-item>
+          <v-list-item prepend-icon="mdi-home" title="Home"  to="/home"></v-list-item>
           <v-list-item prepend-icon="mdi-account-arrow-right" title="การเข้างาน"  to="/checkin"></v-list-item>
           <v-list-item prepend-icon="mdi-folder-account" title="ข้อมูลพนักงาน" to="/employee"></v-list-item>
 
@@ -25,7 +25,7 @@
           ></v-list-item>
         </template>
         <div>
-          
+
         </div>
 
        
