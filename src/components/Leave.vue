@@ -7,14 +7,18 @@
             <v-col cols sm="12" md="6" style="padding: 10px;">
 
                 <v-select label="ประเภทการลา" :items="['ลากิจ', 'ลาป่วย', 'ลาพักร้อน',]" variant="solo"></v-select>
+
+            </v-col>
+            <v-col>
                 <v-text-field v-model="firstname" :rules="nameRules" label="เหตุผลเนื่องจาก(กรณีลากิจ)"
                     variant="solo"></v-text-field>
+
             </v-col>
 
             <v-col cols sm="12" md="6" style="padding: 10px;">
 
-                <v-file-input label="Upload a file" :show-size="true" :small-chips="true"
-                    :counter="1" accept=".jpg, .jpeg, .png, .pdf" @change="onFileSelected">
+                <v-file-input label="Upload a file" :show-size="true" :small-chips="true" :counter="1"
+                    accept=".jpg, .jpeg, .png, .pdf" @change="onFileSelected" variant="solo">
                     <!-- Override the default icon with the one you want to use -->
                     <template v-slot:selection="{ text }">
                         <v-chip small label color="primary">
@@ -75,17 +79,42 @@
 
 
     </v-container>
-   
-        <v-row no-gutters>
-            <v-col cols sm="3" md="3">
+    <v-row style="display: flex; justify-content: flex-end; ">
+        <v-col md="3" style="position: relative;">
+            <v-dialog v-model="dialog" persistent width="auto">
+                <template v-slot:activator="{ props }">
+                    <v-btn color="primary" v-bind="props"  style="position: absolute;">
+                        ดำเนินการต่อ
+                    </v-btn>
+                </template>
+                <v-card>
+                    <v-card-title class="text-h5">
+                        Use Google's location service?
+                    </v-card-title>
+                    <v-card-text>Let Google help apps determine location. This means sending anonymous location data to
+                        Google, even when no apps are running.</v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="red-darken-4" variant="text" @click="dialog = false">
+                            ยกเลิก
+                        </v-btn>
+                        <v-btn color="green-darken-1" variant="text" @click="dialog = false"  to="/history">
+                            ยืนยัน
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+        </v-col>
+    </v-row>
 
-                <v-btn color="success" class="mt-4" block @click="validate"
-                    size="large" to="">
-                    ดำเนินการต่อ
-                </v-btn>
-            </v-col>
-        </v-row>
-    
+    <!-- <v-row no-gutters style="display: flex; justify-content: flex-end; ">
+        <v-col md="3" style="position: relative;" >
+
+            <v-btn color="success" class="mt-4" block @click="validate" size="large" to="" style="position: absolute; ">
+                ดำเนินการต่อ
+            </v-btn>
+        </v-col>
+    </v-row> -->
 </template>
 <style>
 label {
@@ -107,16 +136,19 @@ label {
 
 export default {
     data: () => ({
+
+        dialog: false,
+
         methods: {
             onFileSelected(files) {
                 console.log(files)
             }
         },
-        rules: [
-            value => {
-                return !value || !value.length || value[0].size < 2000000 || 'Avatar size should be less than 2 MB!'
-            },
-        ],
+      
+       
+   
+       
+
         files: [],
         date: null,
         trip: {
@@ -126,6 +158,9 @@ export default {
             end: null,
         },
         locations: ['Australia', 'Barbados', 'Chile', 'Denmark', 'Ecuador', 'France'],
+        
+    
+
 
 
 
