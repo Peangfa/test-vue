@@ -1,5 +1,7 @@
 <template>
-    <h2 style="margin-top: 30px;margin-left: 40px;">แก้ไขข้อมูลพนักงาน</h2>
+    <h2 style="margin-top: 30px;margin-left: 40px;" to="/Employee">แก้ไข ข้อมูลพนักงาน</h2>
+    
+    
     <v-container style="padding: 20px;">
         <v-card style="background-color: #333333;">
             <!-- ไอคอนแก้ไข -->
@@ -24,22 +26,12 @@
                                         hint="example of helper text only on focus"></v-text-field>
                                 </v-col>
                                 <v-col cols="12" sm="6" md="4">
-                                    <v-text-field label="ชื่อเล่น*" hint="example of persistent helper text" persistent-hint
+                                    <v-text-field label="ชื่อเล่น*" persistent-hint
                                         required></v-text-field>
                                 </v-col>
                                 <v-col cols="12">
-                                    <div>
-                                        <div class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
-                                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false"
-                                            transition="scale-transition" offset-y min-width="auto">
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-text-field v-model="date" label="Birthday date"
-                                                    prepend-icon="mdi-calendar" readonly v-bind="attrs"
-                                                    v-on="on"></v-text-field>
-                                            </template>
-
-                                        </v-menu>
-                                    </div>
+                                    <v-text-field label="วันเกิด*" hint="01/01/2566" persistent-hint
+                                        required></v-text-field>
                                 </v-col>
                                 <v-col cols="12">
                                     <v-text-field label="อีเมล์*" required></v-text-field>
@@ -52,9 +44,7 @@
                                     <v-select :items="['0-17', '18-29', '30-54', '54+']" label="อายุ*" required></v-select>
                                 </v-col>
                                 <v-col cols="12" sm="6">
-                                    <v-autocomplete
-                                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                                        label="Interests" multiple></v-autocomplete>
+                                    <v-text-field label="เบอร์โทรศัพท์*" required></v-text-field>
                                 </v-col>
                             </v-row>
 
@@ -62,11 +52,11 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
-                                Close
+                            <v-btn color="red-darken-4" variant="text" @click="dialog = false">
+                               ปิด
                             </v-btn>
-                            <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
-                                Save
+                            <v-btn color="green-darken-1" variant="text" @click="dialog = false">
+                                บันทึก
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -105,7 +95,10 @@
                                 ลาป่วย
                             </template>
                             <v-card-text>
-                                This is content
+                                จำนวนวันลาที่เหลือ :
+                            </v-card-text>
+                            <v-card-text>
+                                ใช้ไปแล้ว :
                             </v-card-text>
                         </v-card>
                         <v-card width="190" style="margin: 5px;">
@@ -113,7 +106,10 @@
                                 ลากิจ
                             </template>
                             <v-card-text>
-                                This is content
+                                จำนวนวันลาที่เหลือ :
+                            </v-card-text>
+                            <v-card-text>
+                                ใช้ไปแล้ว :
                             </v-card-text>
                         </v-card>
                         <v-card width="190" style="margin: 5px;">
@@ -121,7 +117,10 @@
                                 ลาพักร้อน
                             </template>
                             <v-card-text>
-                                This is content
+                                จำนวนวันลาที่เหลือ :
+                            </v-card-text>
+                            <v-card-text>
+                                ใช้ไปแล้ว :
                             </v-card-text>
                         </v-card>
 
@@ -295,7 +294,10 @@ export default {
             },
 
 
-        ]
+        ],
+      
+  
+      
 
 
     })

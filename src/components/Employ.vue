@@ -1,5 +1,7 @@
 <template>
-  <h2 style="margin-top: 30px;margin-left: 40px;">ข้อมูลพนักงาน</h2>
+  <h2 style="margin-top: 30px;margin-left: 40px;" to="/Employee">ข้อมูลพนักงาน</h2>
+
+
   <v-container style="padding: 20px;">
     <v-card to="/Edit" style="background-color: #333333;">
 
@@ -28,30 +30,39 @@
           <p style="padding: 5px; color: white;"><v-icon>mdi-briefcase</v-icon>
             Human Resouces
           </p>
- 
+
           <v-col style="display: flex;">
             <v-card width="190" style="margin: 5px; ">
               <template v-slot:title>
                 ลาป่วย
               </template>
               <v-card-text>
-                This is content
+                จำนวนวันลาที่เหลือ :
+              </v-card-text>
+              <v-card-text>
+                ใช้ไปแล้ว :
               </v-card-text>
             </v-card>
-            <v-card  width="190" style="margin: 5px;">
+            <v-card width="190" style="margin: 5px;">
               <template v-slot:title>
                 ลากิจ
               </template>
               <v-card-text>
-                This is content
+                จำนวนวันลาที่เหลือ :
+              </v-card-text>
+              <v-card-text>
+                ใช้ไปแล้ว :
               </v-card-text>
             </v-card>
-            <v-card  width="190" style="margin: 5px;">
+            <v-card width="190" style="margin: 5px;">
               <template v-slot:title>
                 ลาพักร้อน
               </template>
               <v-card-text>
-                This is content
+                จำนวนวันลาที่เหลือ :
+              </v-card-text>
+              <v-card-text>
+                ใช้ไปแล้ว :
               </v-card-text>
             </v-card>
 
@@ -65,7 +76,6 @@
 
     </v-card>
   </v-container>
-
 </template>
 
 
@@ -76,8 +86,9 @@ export default {
   name: 'Employ',
 
   data: () => ({
-      dialog: false,
-    }),
+    dialog: false,
+
+  }),
   // data() {
   //   return {
   //     employeeData: [{
