@@ -16,17 +16,13 @@
             </v-col>
 
             <v-col cols sm="12" md="6" style="padding: 10px;">
+        
+                    <div>
+                        <v-file-input variant="solo" label="Choose a file" v-model="selectedFile"
+                            @change="handleFileUpload"></v-file-input>
+                    </div>
+                
 
-                <v-file-input label="Upload a file" :show-size="true" :small-chips="true" :counter="1"
-                    accept=".jpg, .jpeg, .png, .pdf" @change="onFileSelected" variant="solo">
-                    <!-- Override the default icon with the one you want to use -->
-                    <template v-slot:selection="{ text }">
-                        <v-chip small label color="primary">
-                            <v-icon left>mdi-file</v-icon> <!-- Set the icon for the selected file -->
-                            {{ text }}
-                        </v-chip>
-                    </template>
-                </v-file-input>
             </v-col>
         </v-row>
         <v-row no-gutters>
@@ -83,22 +79,21 @@
         <v-col md="3" style="position: relative;">
             <v-dialog v-model="dialog" persistent width="auto">
                 <template v-slot:activator="{ props }">
-                    <v-btn color="primary" v-bind="props"  style="position: absolute;">
+                    <v-btn size="large" color="primary" v-bind="props" style="position: absolute;">
                         ดำเนินการต่อ
                     </v-btn>
                 </template>
                 <v-card>
                     <v-card-title class="text-h5">
-                        Use Google's location service?
+                        ต้องการบันทึกข้อมูลใช่หรือไม่?
                     </v-card-title>
-                    <v-card-text>Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.</v-card-text>
+                    <v-card-text style="color: red;">**โปรดเช็คข้อมูลให้ถูกต้องก่อนจะกดตกลง**</v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="red-darken-4" variant="text" @click="dialog = false">
                             ยกเลิก
                         </v-btn>
-                        <v-btn color="green-darken-1" variant="text" @click="dialog = false"  to="/history">
+                        <v-btn color="green-darken-1" variant="text" @click="dialog = false" to="/history">
                             ยืนยัน
                         </v-btn>
                     </v-card-actions>
@@ -144,10 +139,10 @@ export default {
                 console.log(files)
             }
         },
-      
-       
-   
-       
+
+
+
+
 
         files: [],
         date: null,
@@ -158,8 +153,8 @@ export default {
             end: null,
         },
         locations: ['Australia', 'Barbados', 'Chile', 'Denmark', 'Ecuador', 'France'],
-        
-    
+
+
 
 
 

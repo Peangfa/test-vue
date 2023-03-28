@@ -1,14 +1,86 @@
 <template>
-  <h2 style="margin-top: 30px;margin-left: 40px;" to="/Employee">ข้อมูลพนักงาน</h2>
+  <h2 style="margin-top: 30px;margin-left: 40px; padding: 20px;" to="/Employee">ข้อมูลพนักงาน</h2>
+
+  <v-row>
+    <v-col md="12" sm="12" style="display: flex;">
+      <v-card class="mx-auto" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+      
+     
+      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+
+      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+      
+    </v-col>
+
+    <v-col md="12" sm="12" style="display: flex;">
+      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
+        to="/Edit" >
+        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
+        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+
+      </v-card>
+    </v-col>
+  </v-row>
+</template>
 
 
-  <v-container style="padding: 20px;">
-    <v-card to="/Edit" style="background-color: #333333;">
 
 
 
 
-      <!-- รูปภาพ -->
+    <!-- <v-container style="padding: 20px; display: flex; flex-direction: row;">
+
+        <v-card class="mx-auto" max-width="344" style="background-color: #333333;padding: 12px;"  to="/Edit">
+          <v-img src="../assets/Korean.jpg" height="300px" ></v-img>
+
+          <v-card-title style="color: aliceblue;">
+            สุชาดา ศิริโกศล
+          </v-card-title>
+
+          <v-card-subtitle style="color: aliceblue;">
+            Suchada.mook@weserve.co.th
+          </v-card-subtitle>
+        </v-card> -->
+
+    <!-- <v-card to="/Edit" style="background-color: #333333;">
+
+
+
+
+ 
       <v-row no-gutters>
         <v-col cols md="5" sm="12" style="display: flex; justify-content: center; padding: 20px; ">
           <v-avatar size="200" rounded="0">
@@ -16,7 +88,7 @@
           </v-avatar>
         </v-col>
 
-        <!-- ข้อมูลพนักงาน -->
+       
         <v-col cols md="7" sm="12" style="  padding: 10px;   ">
           <p style="padding: 5px; color: white;"><v-icon>mdi-account</v-icon>
             สุชาดา ศิริโกศล
@@ -74,9 +146,10 @@
 
 
 
-    </v-card>
-  </v-container>
-</template>
+    </v-card> -->
+    <!-- </v-container> -->
+
+ 
 
 
 
@@ -87,30 +160,12 @@ export default {
 
   data: () => ({
     dialog: false,
+    show: false,
+
 
   }),
-  // data() {
-  //   return {
-  //     employeeData: [{
-  //       name: "Mr.Toon Body",
-  //       role: "HR",
-  //       age: 36
-  //     },{
-  //       name: "Mr.Toon Body",
-  //       role: "Developer",
-  //       age: 36
-  //     },{
-  //       name: "Mr.Toon Body",
-  //       role: "Marketing",
-  //       age: 36
-  //     },{
-  //       name: "Mr.Toon Body",
-  //       role: "HR",
-  //       age: 36
-  //     }],
 
-  //   }
-  // },
+
 }
 </script>
 <style ></style>

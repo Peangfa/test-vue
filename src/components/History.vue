@@ -1,24 +1,28 @@
 <template>
-    <h2 style="margin-top: 30px;margin-left: 40px;">ประวัติการลา</h2>
+    <h2 style="margin-top: 30px;margin-left: 40px; padding: 20px;">ตารางการลา</h2>
     <br>
-    
-        <v-row style="display: flex;flex-direction: column;align-content: flex-end;  padding: 5px">
-            <v-col sm="6" md="4">
-                <v-select label="ประเภทการลา" :items="['ลากิจ', 'ลาป่วย', 'ลาพักร้อน',]" variant="solo"></v-select>
-            </v-col>
-            <v-col sm="6" md="4">
 
-                <v-text-field :loading="loading" density="compact" variant="solo" label="ค้นหาชื่อ"
-                    append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick"></v-text-field>
-            </v-col>
+    <v-row style="    display: flex;
+        flex-direction: column;
+        align-content: flex-end;padding: 10px;">
+        <v-col sm="6" md="6" style="display:flex">
 
-        </v-row>
-
-
-
+            <v-text-field variant="solo" label="ค้นหา" single-line hide-details @click:append-inner="onClick"
+                style="width: 500px;"></v-text-field>
+        </v-col>
+        <v-col sm="12" md="6" style="display:flex">
+            <v-select label="ประเภทการลา" :items="['ลากิจ', 'ลาป่วย', 'ลาพักร้อน',]" variant="solo"
+                style="width: 500px;"></v-select>
+        </v-col>
 
 
-    <v-row style="padding: 20px;">
+    </v-row>
+
+
+
+
+
+    <v-row style="padding: 10px;">
         <v-col>
             <v-card>
                 <v-table fixed-header height="900px">
@@ -55,12 +59,12 @@
 
                                 <div style="display: flex; justify-content: center;">
 
-                                    <v-btn variant="tonal" style="background-color:#00FF00 ;" >
+                                    <v-btn variant="tonal"  color="success">
                                         อนุมัติ
                                     </v-btn>
-                                    
 
-                                    <v-btn variant="tonal" style="background-color:#FF3300 ; ">
+
+                                    <v-btn variant="tonal" color="error">
                                         ไม่อนุมัติ
                                     </v-btn>
 
@@ -80,41 +84,52 @@
 export default {
     name: 'History',
 
-    data() {
+    data: () => ({
+        loaded: false,
+        loading: false,
+
+        methods: {
+            onClick() {
+                this.loading = true
+
+                setTimeout(() => {
+                    this.loading = false
+                    this.loaded = true
+                }, 2000)
+            },
+        },
+
+        desserts: [
+            {
+                name: 'Frozen Yogurt',
+                typeLeave: 'ลาป่วย',
+                date: '22 ก.ค 2566',
+                group: 'The Century King',
+                certificat: 'รูปภาพ',
+                staytus: 'appove',
+            },
+            {
+                name: 'Ice cream sandwich',
+                typeLeave: 'ลากิจ',
+                date: '3 ก.ค 2566',
+                group: 'The Century King',
+                certificat: 'รูปภาพ',
+                staytus: 'appove',
+            },
+            {
+                name: 'Eclair',
+                typeLeave: 'ลาพักร้อน',
+                date: '30 ก.ค 2566',
+                group: 'The Century King',
+                certificat: 'รูปภาพ',
+                staytus: 'appove',
+            },
 
 
-        return {
-            desserts: [
-                {
-                    name: 'Frozen Yogurt',
-                    typeLeave: 'ลาป่วย',
-                    date: '22 ก.ค 2566',
-                    group: 'The Century King',
-                    certificat: 'รูปภาพ',
-                    staytus: 'appove',
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    typeLeave: 'ลากิจ',
-                    date: '3 ก.ค 2566',
-                    group: 'The Century King',
-                    certificat: 'รูปภาพ',
-                    staytus: 'appove',
-                },
-                {
-                    name: 'Eclair',
-                    typeLeave: 'ลาพักร้อน',
-                    date: '30 ก.ค 2566',
-                    group: 'The Century King',
-                    certificat: 'รูปภาพ',
-                    staytus: 'appove',
-                },
+        ]
 
 
-            ]
-
-        }
-    }
+    }),
 }
 
 

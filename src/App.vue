@@ -1,41 +1,40 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" style="background-color: #FDE10A;" v-if="$route.name !== 'Login'">
-      <v-img style="padding: 20px;" src="./assets/logoweserve1.png"></v-img>
-      <!-- <v-list density="compact" nav>
-        <v-list-item prepend-icon="mdi-home" title="" value="หน้าหลัก" to="/home">หน้าหลัก</v-list-item>
-        <v-list-item prepend-icon="mdi-account-arrow-right" title="" value="การเข้างาน"
-          to="/checkin">การเข้างาน</v-list-item>
-        <v-list-item prepend-icon="mdi-folder-account" title="" value="ข้อมูลพนักงาน"
-          to="/employee">ข้อมูลพนักงาน</v-list-item> -->
+      <v-img style="width: 200px;height: 50px; left: 25px; top: 8px;" src="./assets/logoweserve1.png"></v-img>
 
-
-      <v-list v-model:opened="open">
+      <v-list v-model:opened="open" style="    top: 45px;">
         <v-list-item prepend-icon="mdi-home" title="Home" to="/home"></v-list-item>
         <v-list-item prepend-icon="mdi-account-arrow-right" title="การเข้างาน" to="/checkin"></v-list-item>
-        <v-list-item prepend-icon="mdi-folder-account" title="ข้อมูลพนักงาน" to="/employee"></v-list-item>
+       
+        <v-list-group value="ข้อมูลพนักงาน">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" prepend-icon="mdi-folder-account" title="ฝ่ายบุคคล"></v-list-item>
+          </template>
+          <v-list-item v-bind="props" title="ข้อมูลพนักงาน" to="/employee"></v-list-item>
+            <template v-slot:append>
+              <v-badge color="error" content="6" inline></v-badge>
+            </template>
+            <v-list-item v-bind="props" title="แก้ไขข้อมูลพนักงาน" to="/edit"></v-list-item>
+        </v-list-group>
 
         <v-list-group value="การลางาน">
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="การลางาน"></v-list-item>
           </template>
-          <div>
-
-          </div>
-
-
-
           <v-list-item v-bind="props" title="ยื่นลา" to="/Leave"></v-list-item>
+          <v-list-item v-bind="props" title="ตารางการลา" to="/history">
+            <template v-slot:append>
+              <v-badge color="error" content="6" inline></v-badge>
+            </template></v-list-item>
 
-          <v-list-item v-bind="props" title="ตารางการลา" to="/history"></v-list-item>
         </v-list-group>
       </v-list>
 
 
 
 
-      <!-- 
-      </v-list> -->
+
 
     </v-navigation-drawer>
 
@@ -47,17 +46,13 @@
 
       <v-menu min-width="200px" rounded>
         <template v-slot:activator="{ props }">
-          <v-btn class="text-none" stacked>
-            <v-badge content="2" color="error">
-              <v-icon color="#fff">mdi-bell-outline</v-icon>
-            </v-badge>
-          </v-btn>
+
           <v-btn icon v-bind="props" style="right: 15px;">
             <v-avatar>
               <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">{{ user.initials }}</v-img>
             </v-avatar>
           </v-btn>
-       
+
         </template>
         <v-card>
           <v-card-text>
@@ -99,13 +94,13 @@ export default {
     drawer: null,
 
     user: {
-      
+
       fullName: 'John Doe',
       email: 'john.doe@doe.com',
     },
-    open: ['Users'],
+    
     admins: [],
-    cruds: [],
+    
 
   }),
 }

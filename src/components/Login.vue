@@ -6,21 +6,21 @@
                 <div class="imglogo" style="position: relative;">
                     <v-img src="../assets/logoweserve1.png" alt="logo"></v-img>
 
-                    <div class="box" style="position: absolute; left: 35%; top: 85%;">
+                    <div class="box" style="position: absolute; left: 42%; top: 85%;">
                         <h3>HUMAN RESOUCES</h3>
-
+                        
                     </div>
                 </div>
 
 
-                <div style="margin-top: 30px; margin-left: 36px; padding: 80px; si">
-                    <router-link to="/Home">
-                        <v-btn variant="outlined" size="x-large" style="background-color: #EDEDED; ">
+                <div style=" margin-left: 40px; padding: 80px;">
+                    
+                        <v-btn to="/Home" variant="outlined" size="x-large" style="background-color: #EDEDED;left: 36px;">
                             <v-img src="../assets/google.png" width="30" height="30"></v-img>
                             <div>Login by google</div>
 
                         </v-btn>
-                    </router-link>
+                   
                 </div>
             </div>
         </div>
@@ -29,10 +29,11 @@
 
 <script>
 export default {
-    name: 'Login'
+    name: 'Login',
+   
 }
 
 </script>
 
-<style scoped></style>
+
 
