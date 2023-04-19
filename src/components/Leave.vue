@@ -1,8 +1,8 @@
 <template>
     <div class="Leave">
-        <h2 style="padding-left: 20px; padding-top: 20px;color: black;">การลางาน</h2>
+        <h2 style="margin-top: 30px;margin-left: 40px;color: black;">การลางาน</h2>
     </div>
-    <v-container>
+    <v-container v-model="filldata">
         <v-row no-gutters>
             <v-col cols sm="12" md="6" style="padding: 10px;">
 
@@ -93,7 +93,7 @@
                         <v-btn color="red-darken-4" variant="text" @click="dialog = false">
                             ยกเลิก
                         </v-btn>
-                        <v-btn color="green-darken-1" variant="text" @click="dialog = false" to="/history">
+                        <v-btn color="green-darken-1" variant="text" @click="dialog = false" to="/Dashboard">
                             ยืนยัน
                         </v-btn>
                     </v-card-actions>
@@ -101,6 +101,7 @@
             </v-dialog>
         </v-col>
     </v-row>
+    
 
     <!-- <v-row no-gutters style="display: flex; justify-content: flex-end; ">
         <v-col md="3" style="position: relative;" >
@@ -110,6 +111,7 @@
             </v-btn>
         </v-col>
     </v-row> -->
+    
 </template>
 <style>
 label {
@@ -133,6 +135,7 @@ export default {
     data: () => ({
 
         dialog: false,
+        filldata:"",
 
         methods: {
             onFileSelected(files) {

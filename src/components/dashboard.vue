@@ -1,26 +1,20 @@
 <template>
-    <h2 style="margin-top: 30px;margin-left: 40px; padding: 20px;">ตารางการลา</h2>
+    <h2 style="margin-top: 30px;margin-left: 40px; ">ตารางการลา</h2>
     <br>
+    <v-row style="display: flex;flex-direction: column;align-content: flex-end;padding: 10px;">
 
-    <v-row style="    display: flex;
-        flex-direction: column;
-        align-content: flex-end;padding: 10px;">
         <v-col sm="6" md="6" style="display:flex">
 
-            <v-text-field variant="solo" label="ค้นหา" single-line hide-details @click:append-inner="onClick"
-                style="width: 500px;"></v-text-field>
+            <v-text-field v-model="Search" variant="solo" label="ค้นหา" single-line hide-details
+                @click:append-inner="onClick" style="width: 500px;"></v-text-field>
         </v-col>
         <v-col sm="12" md="6" style="display:flex">
-            <v-select label="ประเภทการลา" :items="['ลากิจ', 'ลาป่วย', 'ลาพักร้อน',]" variant="solo"
+            <v-select label="ประเภทการลา" :items="['ลากิจ', 'ลาป่วย', 'ลาพักร้อน',]" variant="solo" v-model="search"
                 style="width: 500px;"></v-select>
         </v-col>
 
 
     </v-row>
-
-
-
-
 
     <v-row style="padding: 10px;">
         <v-col>
@@ -49,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in desserts" :key="item.name">
+                        <tr v-for="(item, index) in filteredList" :key="index"> 
                             <td>{{ item.name }}</td>
                             <td>{{ item.typeLeave }}</td>
                             <td>{{ item.date }}</td>
@@ -59,7 +53,7 @@
 
                                 <div style="display: flex; justify-content: center;">
 
-                                    <v-btn variant="tonal"  color="success">
+                                    <v-btn variant="tonal" color="success">
                                         อนุมัติ
                                     </v-btn>
 
@@ -82,22 +76,16 @@
 
 <script>
 export default {
-    name: 'History',
+    name: 'Dashboard',
 
     data: () => ({
         loaded: false,
         loading: false,
+        Search: "",
+        search:'',
+      
+       
 
-        methods: {
-            onClick() {
-                this.loading = true
-
-                setTimeout(() => {
-                    this.loading = false
-                    this.loaded = true
-                }, 2000)
-            },
-        },
 
         desserts: [
             {
@@ -130,6 +118,30 @@ export default {
 
 
     }),
+    computed: {
+     
+        filteredList() {
+      return this.desserts.filter(post => {
+        return post.typeLeave.toLowerCase().includes(this.search.toLowerCase()) 
+        || post.name.toLowerCase().includes(this.search.toLowerCase()) 
+        
+          
+        
+      })
+    }
+    },
+    methods: {
+        onClick() {
+            this.loading = true
+
+            setTimeout(() => {
+                this.loading = false
+                this.loaded = true
+            }, 2000)
+        },
+       
+    },
+
 }
 
 

@@ -1,6 +1,13 @@
 <template>
-    <h2 style="margin-top: 30px;margin-left: 40px;" to="/Employee">แก้ไข ข้อมูลพนักงาน</h2>
+    <!-- <h2 style="margin-top: 30px;margin-left: 40px;" >แก้ไขข้อมูลพนักงาน</h2> -->
     
+    <v-btn color="white" style="margin-top: 30px;margin-left: 40px;" to="/employee" @click="$emit('back')">
+        <v-icon
+          start
+          icon="mdi-arrow-left"
+        ></v-icon>
+        Back
+      </v-btn>
     
     <v-container style="padding: 20px;">
         <v-card style="background-color: #333333;">
@@ -68,7 +75,7 @@
 
             <!-- รูปภาพ -->
             <v-row no-gutters>
-                <v-col cols md="5" sm="12" style="display: flex; justify-content: center; padding: 20px; ">
+                <v-col cols md="5" sm="12" style="display: flex; justify-content: center; padding: 50px; ">
                     <v-avatar size="200" rounded="0">
                         <v-img aspect-ratio="1/1" cover src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"></v-img>
                     </v-avatar>
@@ -77,16 +84,16 @@
                 <!-- ข้อมูลพนักงาน -->
                 <v-col cols md="7" sm="12" style="  padding: 10px;   ">
                     <p style="padding: 5px;  color: white;"><v-icon>mdi-account</v-icon>
-                        สุชาดา ศิริโกศล
+                       {{ user.name }}
                     </p>
 
                     <p style="padding: 5px; color: white;"  >
                         <v-icon>mdi-email</v-icon>
-                        Suchada.mook@weserve.co.th
+                        {{ user.mail }}
                     </p>
 
                     <p style="padding: 5px; color: white;" ><v-icon>mdi-briefcase</v-icon>
-                        Human Resouces
+                        {{user.position}}
                     </p>
 
                     <v-col style="display: flex;">
@@ -150,7 +157,7 @@
             </v-expansion-panel-title>
             <v-expansion-panel-text>
                 <v-row justify="space-around" no-gutters>
-                    <v-col sm="6" md="10">
+                    <v-col sm="8" md="10">
                         <v-card>
                             <v-table fixed-header height="250px">
                                 <thead>
@@ -177,11 +184,11 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="item in desserts" :key="item.name">
-                                        <td>{{ item.name }}</td>
-                                        <td>{{ item.typeLeave }}</td>
-                                        <td>{{ item.date }}</td>
-                                        <td>{{ item.group }}</td>
-                                        <td>{{ item.certificat }}</td>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.typeLeave }}</td>
+                                        <td>{{ user.date }}</td>
+                                        <td>{{ user.group }}</td>
+                                        <td>{{ user.certificat }}</td>
                                         <td>
 
                                             <div style="display: flex; flex-direction: column;">
@@ -206,7 +213,7 @@
         <v-expansion-panel cols="10" style="background-color: #FDE10A;">
             <v-expansion-panel-title v-slot="{ open }">
                 <v-row no-gutters>
-                    <v-col cols="8" class="text--secondary">
+                    <v-col cols="10" class="text--secondary">
                         <v-fade-transition leave-absolute>
                             <span v-if="open">When do you want to travel?</span>
                             <v-row v-else no-gutters style="width: 100%">
@@ -221,16 +228,16 @@
                 <v-card>
                     <v-row v-for="item in empolyinformation" :key="item.name">
                         <v-col md="12" style="display: flex;padding: 35px;">
-                            ชื่อ-นามสกุล :{{ item.name }}
+                            ชื่อ-นามสกุล :{{ user.name}}
                         </v-col>
                         <v-col md="12" style="padding: 35px;">
-                            ชื่อเล่น :{{ item.nickname }}
+                            ชื่อเล่น :{{ user.nickname }}
                         </v-col>
                         <v-col md="12" style="padding: 35px;">
-                            วันเดือนปีเกิด :{{ item.birthdate }}
+                            วันเดือนปีเกิด :{{ user.birthdate }}
                         </v-col>
                         <v-col md="12" style="padding: 35px;">
-                            เบอร์โทรศัพท์ :{{ item.phonenum }}
+                            เบอร์โทรศัพท์ :{{ user.phonenum }}
                         </v-col>
                      
 
@@ -240,11 +247,13 @@
             </v-expansion-panel-text>
         </v-expansion-panel>
     </v-expansion-panels>
+    
 </template>
 
 <script>
 export default {
     name: 'Edit',
+    props: ["user"],
     data: () => ({
 
         dialog: false,

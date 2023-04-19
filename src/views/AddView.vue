@@ -1,19 +1,22 @@
 <template>
-    <History />
+    <div class="Addemploy">
+    <Addemploy/>
+</div>
   </template>
+
   
   <script>
-  
+
 import { defineComponent } from 'vue';
-  
   // Components
-  import History from '@/components/History.vue';
+  
+import Addemploy from '@/components/Addemploy.vue';
   export default defineComponent({
-    name: 'HistoryView',
+    name: 'AddView',
   
     components: {
-    History,
+ 
+   Addemploy
 },
   });
   </script>
-  

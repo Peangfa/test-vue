@@ -1,171 +1,149 @@
 <template>
-  <h2 style="margin-top: 30px;margin-left: 40px; padding: 20px;" to="/Employee">ข้อมูลพนักงาน</h2>
+  <div v-if="change == 1" >
+   
+  
+    <h2 style="margin-top: 30px;margin-left: 40px; ">ข้อมูลพนักงาน</h2>
+    <v-row style="display: flex; justify-content: flex-end;flex-direction: column; margin: 10px; align-items: end;">
+      <v-col style="    display: flex;  justify-content: flex-end;">
+        <v-btn prepend-icon="mdi-plus" @click="myadd()">
+          เพิ่มข้อมูลพนักงาน
+        </v-btn>
 
-  <v-row>
-    <v-col md="12" sm="12" style="display: flex;">
-      <v-card class="mx-auto" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
 
-      </v-card>
-      
-     
-      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+      </v-col>
+      <v-col md="4" sm="12">
 
-      </v-card>
+        <v-select label="ตำแหน่ง" :items="['Human Resouces', 'Web Developer', 'Marketing',]"
+          variant="solo" prepend-inner-icon="mdi-filter-outline" v-model="Search" ></v-select>
 
-      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+      </v-col>
 
-      </v-card>
-      
-    </v-col>
+    </v-row>
 
-    <v-col md="12" sm="12" style="display: flex;">
-      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
 
-      </v-card>
-      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+    <v-row v-for="i in filteredList " :key="index">
+      <v-col md="4" sm="12" style="display: flex;" @click="myClick(i)">
+        <div style="display: flex; padding: 20px;">
+          <v-card style="background-color: #333333; padding: 20px; margin: 5px; width: 400px;height: 500px;">
+            <v-img src="../assets/Korean.jpg" height="300px"></v-img>
+            <v-card-title style="color: aliceblue; text-align: center;"> {{ i.name }}</v-card-title>
+            <v-card-title style="color: aliceblue; text-align: center;"> {{ i.position }}</v-card-title>
 
-      </v-card>
-      <v-card class="mx-auto" max-width="344" style="background-color: #333333; padding: 20px;" 
-        to="/Edit" >
-        <v-img src="../assets/Korean.jpg" height="300px"></v-img>
-        <v-card-title style="color: aliceblue; text-align: center;"> สุชาดา ศิริโกศล </v-card-title>
-        <v-card-title style="color: aliceblue; text-align: center;"> Human Resouces </v-card-title>
+          </v-card>
 
-      </v-card>
-    </v-col>
-  </v-row>
+        </div>
+      </v-col>
+      <!-- {{ count }}  -->
+    </v-row>
+  </div>
+  <div v-else-if="change == 4">
+    <Addemploy />
+
+  </div>
+  <div v-else>
+    <Edit @back="change = 1;" :user="select_user"  @backstep="change = 1;"/>
+  </div>
 </template>
 
 
-
-
-
-
-    <!-- <v-container style="padding: 20px; display: flex; flex-direction: row;">
-
-        <v-card class="mx-auto" max-width="344" style="background-color: #333333;padding: 12px;"  to="/Edit">
-          <v-img src="../assets/Korean.jpg" height="300px" ></v-img>
-
-          <v-card-title style="color: aliceblue;">
-            สุชาดา ศิริโกศล
-          </v-card-title>
-
-          <v-card-subtitle style="color: aliceblue;">
-            Suchada.mook@weserve.co.th
-          </v-card-subtitle>
-        </v-card> -->
-
-    <!-- <v-card to="/Edit" style="background-color: #333333;">
-
-
-
-
- 
-      <v-row no-gutters>
-        <v-col cols md="5" sm="12" style="display: flex; justify-content: center; padding: 20px; ">
-          <v-avatar size="200" rounded="0">
-            <v-img aspect-ratio="1/1" cover src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"></v-img>
-          </v-avatar>
-        </v-col>
-
-       
-        <v-col cols md="7" sm="12" style="  padding: 10px;   ">
-          <p style="padding: 5px; color: white;"><v-icon>mdi-account</v-icon>
-            สุชาดา ศิริโกศล
-          </p>
-
-          <p style="padding: 5px; color: white;">
-            <v-icon>mdi-email</v-icon>
-            Suchada.mook@weserve.co.th
-          </p>
-
-          <p style="padding: 5px; color: white;"><v-icon>mdi-briefcase</v-icon>
-            Human Resouces
-          </p>
-
-          <v-col style="display: flex;">
-            <v-card width="190" style="margin: 5px; ">
-              <template v-slot:title>
-                ลาป่วย
-              </template>
-              <v-card-text>
-                จำนวนวันลาที่เหลือ :
-              </v-card-text>
-              <v-card-text>
-                ใช้ไปแล้ว :
-              </v-card-text>
-            </v-card>
-            <v-card width="190" style="margin: 5px;">
-              <template v-slot:title>
-                ลากิจ
-              </template>
-              <v-card-text>
-                จำนวนวันลาที่เหลือ :
-              </v-card-text>
-              <v-card-text>
-                ใช้ไปแล้ว :
-              </v-card-text>
-            </v-card>
-            <v-card width="190" style="margin: 5px;">
-              <template v-slot:title>
-                ลาพักร้อน
-              </template>
-              <v-card-text>
-                จำนวนวันลาที่เหลือ :
-              </v-card-text>
-              <v-card-text>
-                ใช้ไปแล้ว :
-              </v-card-text>
-            </v-card>
-
-          </v-col>
-        </v-col>
-
-      </v-row>
-
-
-
-
-    </v-card> -->
-    <!-- </v-container> -->
-
- 
-
-
-
-
 <script>
+import { defineComponent } from 'vue';
+import Edit from '../components/Edit.vue';
+import Addemploy from '@/components/Addemploy.vue';
+
+import axios from 'axios';
+import { mapActions } from 'vuex'
+// axios.get('https://jsonplaceholder.typicode.com/posts')
+//   .then(response => {
+//     console.log(response.data);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+
 export default {
   name: 'Employ',
+  components: {
+    Edit,
+    Addemploy,
+  },
 
   data: () => ({
     dialog: false,
     show: false,
+    select_user: "",
+    Search:'',
+   
+    change: 1,
+   employ: [{
+      id: 1,
+      name: "สุชาดา ศิริโกศล",
+      nickname: 'มุก',
+      position: "Human Resouces",
+      mail: "Suchada.mook@weserve.co.th",
+      birthdate:'25 พฤษภาคม 2538',
+      phonenum:'0897654321',
+      
+               
+             
+    },
 
+    {
+      id: 2,
+      name: "สุรเกียรติ ศิริโกศล",
+      nickname: 'บอย',
+      position: "Web Developer",
+      mail: "Surakain.boy@weserve.co.th",
+      birthdate:'2 เมษายน 2538',
+      phonenum:'0897621451',
+      
+    },
+
+    {
+      id: 3,
+      name: "นิชาภา กองแก้ว",
+      nickname: 'นิว',
+      position: "Marketing",
+      mail: "Nichapha.new@weserve.co.th",
+      birthdate:'15 กันยายน 2538',
+      phonenum:'0812365487',
+    },
+    ]
 
   }),
+  methods: {
 
+    myClick(user) {
+      this.select_user = user;
+      this.change = 2;
+    },
+    myadd() {
+      this.change = 4;
+    },
+
+  },
+
+  computed: {
+    count() {
+      return this.$store.state.getEmpolyee
+    },
+    
+    filteredList() {
+      return this.employ.filter(post => {
+        return post.position.toLowerCase().includes(this.Search.toLowerCase()) 
+        || post.name.toLowerCase().includes(this.Search.toLowerCase()) 
+        
+          
+        
+      })
+    }
+  },
+  mounted() {
+
+    const a = this.$store.dispatch('getAPIEMpolsdlsd')
+  }
+  
 
 }
 </script>
-<style ></style>

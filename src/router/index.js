@@ -10,42 +10,52 @@ const routes = [
   {
     path: '/checkin',
     name: 'checkin',
-    component:() =>  import('../views/CheckinView.vue')
+    component: () => import('../views/CheckinView.vue')
   },
 
 
   {
     path: '/employee',
-    name: 'employee',
-    component:() =>  import('../views/EmployeeView.vue')
+    name:'employee',
+    component: () => import('../views/EmployeeView.vue'),
+   
+    
+  },
+  
+  {
+    path: '/Addemploy',
+    name: 'AddView',
+    component: () => import('../views/AddView.vue')
   },
 
   {
     path: '/Leave',
     name: 'Leave',
-    component: () => import( '../views/LeaveView.vue')
+    component: () => import('../views/LeaveView.vue')
   },
   {
-    path: '/history',
-    name:'History',
-    component: () => import('../views/HistoryView.vue')
+    path: '/Dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/DashboardView.vue')
   },
   {
     path: '/profile',
-    name:'Profile',
+    name: 'Profile',
     component: () => import('../views/ProfileView.vue')
   },
   {
-    path:'/',
-    name:'Login',
+    path: '/',
+    name: 'Login',
     component: () => import('../views/LoginView.vue')
   },
   {
     path: '/Edit',
-    name:'Edit',
+    name: 'Edit',
     component: () => import('../views/EditView.vue')
   },
- 
+
+
+
 ]
 
 const router = createRouter({

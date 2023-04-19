@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" style="background-color: #FDE10A;" v-if="$route.name !== 'Login'">
+    <v-navigation-drawer v-model="drawer" style="background-color: #FDE10A; display: block; al" v-if="$route.name !== 'Login'" >
       <v-img style="width: 200px;height: 50px; left: 25px; top: 8px;" src="./assets/logoweserve1.png"></v-img>
 
-      <v-list v-model:opened="open" style="    top: 45px;">
+      <v-list  style="    top: 45px;">
         <v-list-item prepend-icon="mdi-home" title="Home" to="/home"></v-list-item>
         <v-list-item prepend-icon="mdi-account-arrow-right" title="การเข้างาน" to="/checkin"></v-list-item>
        
@@ -15,7 +15,7 @@
             <template v-slot:append>
               <v-badge color="error" content="6" inline></v-badge>
             </template>
-            <v-list-item v-bind="props" title="แก้ไขข้อมูลพนักงาน" to="/edit"></v-list-item>
+           
         </v-list-group>
 
         <v-list-group value="การลางาน">
@@ -23,7 +23,7 @@
             <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="การลางาน"></v-list-item>
           </template>
           <v-list-item v-bind="props" title="ยื่นลา" to="/Leave"></v-list-item>
-          <v-list-item v-bind="props" title="ตารางการลา" to="/history">
+          <v-list-item v-bind="props" title="ตารางการลา" to="/Dashboard">
             <template v-slot:append>
               <v-badge color="error" content="6" inline></v-badge>
             </template></v-list-item>
@@ -47,7 +47,7 @@
       <v-menu min-width="200px" rounded>
         <template v-slot:activator="{ props }">
 
-          <v-btn icon v-bind="props" style="right: 15px;">
+          <v-btn icon v-bind="props" style="right: 15px;" to="/home">
             <v-avatar>
               <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">{{ user.initials }}</v-img>
             </v-avatar>
