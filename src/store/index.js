@@ -12,6 +12,7 @@ export default createStore({
     }
   },
   actions: {
+
      getAPIEMpolsdlsd ( context ) {
      axios.get('https://jsonplaceholder.typicode.com/posts') 
   .then(res => {

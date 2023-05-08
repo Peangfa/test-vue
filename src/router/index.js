@@ -53,6 +53,11 @@ const routes = [
     name: 'Edit',
     component: () => import('../views/EditView.vue')
   },
+  {
+    path: '/Add',
+    name:'Add',
+    component: () => import('../views/AddView.vue')
+  },
 
 
 
