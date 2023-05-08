@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-navigation-drawer v-model="drawer" style="background-color: #FDE10A; display: block; al" v-if="$route.name !== 'Login'" >
+  <v-app >
+    <v-navigation-drawer v-model="drawer" style="background-color: #FDE10A; display: block;al" v-if="$route.name !== 'Login'" >
       <v-img style="width: 200px;height: 50px; left: 25px; top: 8px;" src="./assets/logoweserve1.png"></v-img>
 
       <v-list  style="    top: 45px;">
@@ -22,7 +22,7 @@
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="การลางาน"></v-list-item>
           </template>
-          <v-list-item v-bind="props" title="ยื่นลา" to="/Leave"></v-list-item>
+          <!-- <v-list-item v-bind="props" title="ยื่นลา" to="/Leave"></v-list-item> -->
           <v-list-item v-bind="props" title="ตารางการลา" to="/Dashboard">
             <template v-slot:append>
               <v-badge color="error" content="6" inline></v-badge>
@@ -38,7 +38,7 @@
 
     </v-navigation-drawer>
 
-    <v-app-bar style="background-color: #333333;" v-if="$route.name !== 'Login'">
+    <v-app-bar style="background-color: #333333;position: fixed; top: 0;" v-if="$route.name !== 'Login'" >
       <v-app-bar-nav-icon style="color: white;" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title style="color: white;">HUMAN RESOUCES</v-toolbar-title>
@@ -47,9 +47,9 @@
       <v-menu min-width="200px" rounded>
         <template v-slot:activator="{ props }">
 
-          <v-btn icon v-bind="props" style="right: 15px;" to="/home">
+          <v-btn icon v-bind="props" style="right: 15px;" >
             <v-avatar>
-              <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">{{ user.initials }}</v-img>
+              <v-img src="./assets/Profile.png" alt="John"></v-img>
             </v-avatar>
           </v-btn>
 
@@ -58,7 +58,7 @@
           <v-card-text>
             <div class="mx-auto text-center">
               <v-avatar>
-                <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John"></v-img>
+                <v-img src="./assets/Profile.png" alt="John"></v-img>
               </v-avatar>
               <h3>{{ user.fullName }}</h3>
               <p class="text-caption mt-1">
@@ -95,8 +95,8 @@ export default {
 
     user: {
 
-      fullName: 'John Doe',
-      email: 'john.doe@doe.com',
+      fullName: 'สุชาดา ศิริโกศล',
+      email: 'Suchada.mook@weserve.co.th',
     },
     
     admins: [],
