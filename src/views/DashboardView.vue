@@ -1,5 +1,5 @@
 <template>
-    <History />
+    <dashboard/>
   </template>
   
   <script>
@@ -7,12 +7,13 @@
 import { defineComponent } from 'vue';
   
   // Components
-  import History from '@/components/History.vue';
+  import dashboard from '../components/dashboard.vue';
+
   export default defineComponent({
-    name: 'HistoryView',
+    name: 'DashboardView',
   
     components: {
-    History,
+      dashboard,
 },
   });
   </script>

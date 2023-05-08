@@ -11,18 +11,18 @@
         </v-col>
 
         <!-- ข้อมูลพนักงาน -->
-        <v-col cols md="7" sm="12" style="  padding: 10px;   ">
+        <v-col cols md="7" sm="12" style="  padding: 10px;   " v-for="item in empolyinformation" :key="item.name">
           <p style="padding: 5px; color: white;"><v-icon>mdi-account</v-icon>
-            สุชาดา ศิริโกศล
+            {{item.name }}
           </p>
 
           <p style="padding: 5px; color: white;">
             <v-icon>mdi-email</v-icon>
-            Suchada.mook@weserve.co.th
+            {{ item.mail }}
           </p>
 
           <p style="padding: 5px; color: white;"><v-icon>mdi-briefcase</v-icon>
-            Human Resouces
+            {{ item.position }}
           </p>
 
           <v-col style="display: flex;">
@@ -31,7 +31,7 @@
                 ลาป่วย
               </template>
               <v-card-text>
-                This is content
+                ใช้ไปแล้ว:
               </v-card-text>
             </v-card>
             <v-card width="190" style="margin: 5px;">
@@ -39,7 +39,7 @@
                 ลากิจ
               </template>
               <v-card-text>
-                This is content
+                ใช้ไปแล้ว:
               </v-card-text>
             </v-card>
             <v-card width="190" style="margin: 5px;">
@@ -47,7 +47,7 @@
                 ลาพักร้อน
               </template>
               <v-card-text>
-                This is content
+                ใช้ไปแล้ว:
               </v-card-text>
             </v-card>
 
@@ -108,6 +108,8 @@ export default {
                 nickname: 'มุก',
                 birthdate: '25 พฤษภาคม 2538',
                 phonenum: '0897654321',
+                mail:' Suchada.mook@weserve.co.th',
+                position:'Human Resouces',
             }
         ],
   })
