@@ -1,6 +1,6 @@
 <template>
-    <div class="Addemploy">
-    <Addemploy/>
+    <div class="Add">
+    <Add/>
 </div>
   </template>
 
@@ -10,12 +10,12 @@
 import { defineComponent } from 'vue';
   // Components
 import Add from '../components/Add.vue';
-import Addemploy from '@/components/Addemploy.vue';
+
   export default defineComponent({
-    name: 'AddView',
+    name: 'AddnewView',
   
     components: {
-   Addemploy
+   Add,
 },
   });
   </script>
