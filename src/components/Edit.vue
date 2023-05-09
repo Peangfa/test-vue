@@ -11,70 +11,62 @@
             <!-- ไอคอนแก้ไข -->
             <v-col cols md="12" sm="12" style="display: flex; justify-content: flex-end; position: absolute;">
                 <!-- แก้ไขข้อมูลพนักงาน -->
-                <v-dialog v-model="dialog" persistent width="1024">
+
+                <v-dialog v-model="dialog" max-width="500px">
                     <template v-slot:activator="{ props }">
-                        <v-icon icon="mdi-pencil" v-bind="props" style="color: white;"></v-icon>
+                        <v-btn  icon="  mdi-pencil" dark class="mb-2" v-bind="props"
+                            @click="editItem(item.raw)">
+
+                        </v-btn>
                     </template>
 
                     <v-card>
                         <v-card-title>
-                            <span class="text-h5">แก้ไขข้อมูลพนักงาน</span>
+                            <span class="text-h5">{{ formTitle }}</span>
                         </v-card-title>
                         <v-card-text>
-
-                            <v-row>
-                                <v-col cols="12" sm="6" md="4">
-                                    <v-text-field v-model="editedItem.fname" label="ชื่อ*" required
-                                        variant="solo"></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6" md="4">
-                                    <v-text-field v-model="editedItem.lname" label="นามสกุล" variant="solo"></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6" md="4">
-                                    <v-text-field v-model="nickname" label="ชื่อเล่น*" persistent-hint required
-                                        variant="solo"></v-text-field>
-                                </v-col>
-                                <v-col cols="12">
-                                    <v-text-field v-model="birthdate" label="วันเกิด*" hint="01/01/2566" persistent-hint
-                                        variant="solo" required></v-text-field>
-                                </v-col>
-                                <v-col cols="12">
-
-                                    <v-text-field v-model="email.value.value" :error-messages="email.errorMessage.value"
-                                        label="E-mail"></v-text-field>
-                                </v-col>
-                                <v-col cols="12">
-                                    <v-text-field v-model="password" label="รหัสผ่าน*" type="password" required
-                                        variant="solo"></v-text-field>
-                                </v-col>
-
-                                <v-col cols="12" sm="6">
-                                    <v-select :items="['0-17', '18-29', '30-54', '54+']" label="อายุ*" required
-                                        variant="solo"></v-select>
-                                </v-col>
-                                <v-col cols="12" sm="6">
-                                    <v-text-field v-model="Pnumber" label="เบอร์โทรศัพท์*" required
-                                        variant="solo"></v-text-field>
-                                </v-col>
-                            </v-row>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.name" label="First name " variant="solo"></v-text-field>
+                                    </v-col>
+                                    <!-- <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.lname" label="Last name" variant="solo"></v-text-field>
+                                    </v-col> -->
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.nickname" label="Nickname" variant="solo"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="trip.start" label="Start date" type="date" variant="solo">
+                                        </v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.email" label="Email" variant="solo"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.age" label="Age" variant="solo"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.Pnumber" label="Phonenumber" variant="solo"></v-text-field>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
                         </v-card-text>
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="red-darken-4" variant="text" @click="close">
-                                ปิด
+                            <v-btn color="blue-darken-1" variant="text" @click="close">
+                                Cancel
                             </v-btn>
-                            <v-btn color="green-darken-1" variant="text" @click="save">
-                                บันทึก
+                            <v-btn color="blue-darken-1" variant="text" @click="save">
+                                Save
                             </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
-                <template v-slot:item.actions="{ item }">
-                    <v-icon size="small" class="me-2" @click="editItem(item.raw)">
-                        mdi-pencil
-                    </v-icon>
-                </template>
+
+
+
             </v-col>
 
 
@@ -281,17 +273,15 @@ export default {
         desserts: [],
         editedIndex: -1,
         editedItem: {
-            fname: '',
-            lname: '',
+            name: '',
             nickname: '',
             birthdate: '',
             email: '',
-            password: '',
             age: '',
             Pnumber: '',
         },
         defaultItem: {
-            fname: '',
+            name: '',
             lname: '',
             nickname: '',
             birthdate: '',
@@ -306,7 +296,7 @@ export default {
 
     computed: {
         formTitle() {
-            return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+            return this.editedIndex === -1 ? 'Edit Item' : 'New Item'
         },
 
 
@@ -329,13 +319,14 @@ export default {
             this.desserts = [
                 {
                     id: 1,
-                    name: "สุชาดา ศิริโกศล",
+                    name: 'สุชาดา ศิริโกศล',
                     nickname: 'มุก',
                     position: "Human Resouces",
                     mail: "Suchada.mook@weserve.co.th",
                     birthdate: '25 พฤษภาคม 2538',
                     phonenum: '0897654321',
                     typeLeave: 'ลาป่วย',
+                    sickLeave: '2 วัน',
 
                 },
                 {
@@ -392,13 +383,7 @@ export default {
             })
         },
 
-        closeDelete() {
-            this.dialogDelete = false
-            this.$nextTick(() => {
-                this.editedItem = Object.assign({}, this.defaultItem)
-                this.editedIndex = -1
-            })
-        },
+
 
         save() {
             if (this.editedIndex > -1) {
